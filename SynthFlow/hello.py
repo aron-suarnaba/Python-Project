@@ -19,10 +19,6 @@ def progressBar():
         time.sleep(0.1)
 
 
-            
-            
-        
-        
 try:
     FileManagementCLI()
 except Exception as e:
