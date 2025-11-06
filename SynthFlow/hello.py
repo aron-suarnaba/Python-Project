@@ -1,11 +1,8 @@
-import os
 from pathlib import Path
 import time
 import sys
-import shutil
-import zipfile
 from FileManagement import FileManagementCLI
-
+import Networking
 
 def progressBar():
     TOTAL_COUNT = 100
@@ -20,7 +17,8 @@ def progressBar():
 
 
 try:
-    FileManagementCLI()
+    Networking.NetworkingCLI()
+    
 except Exception as e:
     print(f"Error: {e}")
     
