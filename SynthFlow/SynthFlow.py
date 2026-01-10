@@ -46,6 +46,7 @@ def phase_one():
             case "exit" | "quit":
                 print("Exiting program. Bye!")
                 break
+            
             case _:
                 print("Unknown command. Please try again.")
 
