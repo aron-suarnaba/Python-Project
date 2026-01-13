@@ -2,6 +2,7 @@ import os
 import sys
 import time
 import zipfile
+import shutil
 
 # def loadingAnimation():
 #     spinner = ['|', '/', '-', '\\']
@@ -14,26 +15,46 @@ import zipfile
 
 class Files:
     def __init__(self):
-        self.abspath = os.path.dirname(os.path.abspath(__file__))
+        pass
+        # self.abspath = os.path.dirname(os.path.abspath(__file__))
         
         
     # Backup the file or folder in zip format
-    def ZipBackup(self, unzipFile):
-        print("""1. File\n2. Folder""")
-        try:
-            option = int(input(">>> "))
-            if option == 1:
-                fileToBeZip = str(input("Enter the filename ... \n>>> "))
-                filepathToBeZip = os.path.abspath(fileToBeZip)
-                print(filepathToBeZip)
+    def ZipBackup(self, filepath):
+        print("1. Zip Files\n2. Zip Folder")
+        option = int(input(">>> "))
+
+        if option == 1:
+            confirmation = bool(input("Confirm? \n1. Yes\n2. No\n>>>"))
+
+            if confirmation:
+
+                counter = 2
+
+                # Creating New Name
+                while True:
+                    separatedFile = filepath.rsplit('.', 1)
+                    rawFilePath = separatedFile[0]
+                    extension = separatedFile[1]
+                    stringCounter = str(counter)
+                    newFilePath = rawFilePath + "_" + stringCounter + "." + extension
+
+                    if os.path.exists(newFilePath):
+                        print(f"{newFilePath} is exist ... \Creating new filename ... ")
+                        counter += 1
+                    else:
+                        print(newFilePath)
+                        break
+
+                with open(newFilePath) as filepath:
+                    print(filepath)
+
             else:
-                print("The option that you provide does not exist ... ")
-        except Exception as e:
-            print(f"Error: {e}")
-            
-            
-        
+                print("Aborting ... ")
+
+        else:
+            print("The option that you provide does not exist ... ")
 
 
 files = Files()
-files.ZipBackup('hello.py')
+files.ZipBackup("C:/Users/aron.suarnaba/Downloads/Image (1).jpg")
